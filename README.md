@@ -1,6 +1,6 @@
 # Wasupol Chaisangasilp
 
-<center><img src ="code4sec/images/000.jpg" width ="50%"></center>
+<img align="center" src ="code4sec/images/000.jpg" width ="50%">
 
 My name is Wasupol Chaisangasilp. I graduated Bachelor of Faculty of Science, IT Branch from RBAC University. And now, I am studying Master of Science in Cybersecurity Engineering at Mahanakorn University. Now, I joined ***[T-NET IT Solution Co,.Ltd.](www.tnetitsolution.co.th)***. as IT Security Engineer.
 
