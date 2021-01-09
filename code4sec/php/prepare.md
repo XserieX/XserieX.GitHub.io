@@ -1,7 +1,7 @@
 Prepare
 ===================
 
-<img src ="../images/001.jpg" width ="50%">
+<img src ="../images/001.jpg" width ="100%">
 
  **Prepare** คือ ฟังก์ชันที่ใช้ในการหลบเลี่ยง สตริงที่ใช้กับ mysql query ช่วยป้องกันการทำ SQL Injection
  โดยการทำ SQL injection ใช้หลักการอาศัยช่องโหว่ของ string กำหนดค่าให้ parameter แล้วแทนค่า ให้กับ เงื่อนไขนั้นอีกที 
