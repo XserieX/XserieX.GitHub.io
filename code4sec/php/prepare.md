@@ -1,7 +1,7 @@
 Prepare
 ===================
 
-<img src ="https://www.google.com/url?sa=i&url=https%3A%2F%2Fnews.microsoft.com%2Fon-the-issues%2F2019%2F09%2F04%2Fhollywood-hacking-movies%2F&psig=AOvVaw07sFqEsNUqJZuTScki78x8&ust=1610295999668000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLj7556ij-4CFQAAAAAdAAAAABAD" width ="100%" hight = "100%">
+<img src ="../images/001.jpg" width ="100%" hight = "100%">
 
  **Prepare** คือ ฟังก์ชันที่ใช้ในการหลบเลี่ยง สตริงที่ใช้กับ mysql query ช่วยป้องกันการทำ SQL Injection
  โดยการทำ SQL injection ใช้หลักการอาศัยช่องโหว่ของ string กำหนดค่าให้ parameter แล้วแทนค่า ให้กับ เงื่อนไขนั้นอีกที 
