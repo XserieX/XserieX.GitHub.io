@@ -13,10 +13,10 @@ Prepare
 ในการ bind parameter จะใช้คำสั่ง
 $stmt->bind_param('s', $strCustomerID); 
 ในค่าแรกที่กำหนดจะเป็น string type ประกอบด้วย 
-1.i (Interger) จำนวนเต็ม
-2.d (double) เลขทศนิยม
-3.s (string) ข้อความ
-4.b (Blob / Binary Large OBject ) ข้อมูล Binary
+- i (Interger) จำนวนเต็ม
+- d (double) เลขทศนิยม
+- s (string) ข้อความ
+- b (Blob / Binary Large OBject ) ข้อมูล Binary
 
 ***โค้ดปกติที่ใช้กันทั่วไป NON-Prepare*** 
 
