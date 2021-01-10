@@ -9,7 +9,7 @@ Base64
 
     base64_encode ( string $string ) : string
 
-***ตัวอย่างการนำไปใช้ในการเข้ารหัส*** 
+***ตัวอย่างการนำไปใช้ในการเข้ารหัส***
 
     <?php
     $str = 'My name is XserieX';
