@@ -1,105 +1,42 @@
-Prepare
+Base64
 ===================
 
 ![](../images/base64.png)
 
- **Prepare** คือ ฟังก์ชันที่ใช้ในการหลบเลี่ยง สตริงที่ใช้กับ mysql query ช่วยป้องกันการทำ SQL Injection
- โดยการทำ SQL injection ใช้หลักการอาศัยช่องโหว่ของ string กำหนดค่าให้ parameter แล้วแทนค่า ให้กับ เงื่อนไขนั้นอีกที 
+ **Base64** คือ วิธีการเข้ารหัสข้อมูลรูปแบบหนึ่ง ที่จะเปลี่ยนข้อความ หรือข้อมูลต้นฉบับไปเป็นข้อความ หรือข้อมูลชุดใหม่
+ ที่ไม่สามารถอ่าน หรือรู้ว่าข้อมูลชุดนี้คืออะไร ซึ่งการเข้ารหัสชนิดนี้จะแทนที่ข้อมูลด้วยตัวอักษร 64 ตัว นั่นคือที่มาของ BASE64
+ ซึ่่งวิธีการถอดรหัสด้วยตนเองนั้นค่อนข้างจะซับซ้อน คือ  จะทําย้อนกลับโดยให้นําข้อมูลมาแปลงเป็นฐานสอง 6 bit มาเรียงต่อกันก่อน 
+ แล้วนํามาจัดกลุ่ม กลุ่มละ 8 bit โดย bit สุดท้ายที่เหลือไม่ครบ 8 bit ให้ตัดทิ้ง หลังจากนั้นก็แปลงเลขฐานสอง 8 bit
+ แต่ละชุดเป็นข้อมูล ASCII เท่านี้ก็จะได้ข้อมูลต้นฉบับแล้ว
 
  **รูปแบบการใช้งาน**
 
-    mysqli_prepare ( mysqli $link , string $query ) : mysqli_stmt
+    base64_encode ( string $string ) : string
 
-ในการ bind parameter จะใช้คำสั่ง
-$stmt->bind_param('s', $strCustomerID); 
-ในค่าแรกที่กำหนดจะเป็น string type ประกอบด้วย 
-- i (Interger) จำนวนเต็ม
-- d (double) เลขทศนิยม
-- s (string) ข้อความ
-- b (Blob / Binary Large OBject ) ข้อมูล Binary
+***โตัวอย่างการนำไปใช้ในการเข้ารหัส*** 
 
-***โค้ดปกติที่ใช้กันทั่วไป NON-Prepare*** 
-
-    $strCustomerID = $_GET['id']; 
-    $conn = mysqli_connect($serverName,$userName,$userPassword,$dbName);
-    $sql = "SELECT * FROM customer WHERE CustomerID = '$strCustomerID'";
-    $query = mysqli_query($conn,$sql);
-
-เมื่อเราใส่ URL http://localhost/job/test.php?id=C001
+    <?php
+    $str = 'My name is XserieX';
+    echo base64_encode($str);
+    ?>
 
 ***ผลลัพธ์***
 
-    C001
-    Win Weerachai
-    win.weerachai@thaicreate.com
-    TH
-    1000000
-    600000
+    TXkgbmFtZSBpcyBYc2VyaWVY
 
-***ทำการ SQL Injection***
+***ตัวอย่างการนำไปใช้ในการเข้ารหัส 2***
 
-http://localhost/job/test.php?id=C001'+or+'1'='1&Submit=Submit#
-http://localhost/job/test.php?id=C001'+or+'1'+=+'1
+    <?php
+    echo base64_encode("This is a book");
+    ?>
 
 ***ผลลัพธ์***
 
-    C001
-    Win Weerachai
-    win.weerachai@thaicreate.com
-    TH
-    1000000
-    600000
+    VGhpcyBpcyBhIGJvb2s=
 
-    C002
-    John Smith
-    john.smith@thaicreate.com
-    UK
-    2000000
-    800000
+โดยการเข้ารหัสนั้นจะช่วยป้องกันไม่ให้ผู้อื่นตีความหรืออ่านข้อมูลได้ เพราะถูกเข้ารหัสไว้ ถ้าจะถอดรหัสต้องใช้ ฟังก์ชัน base64_decode()
+แต่ถ้าหากไม่รู้ว่าถูกเข้ารหัสด้วยอะไรก็คงอยากที่จะมาถอดรหัส เพราะยังมีอีกหลายฟังก์ชั่นในการเข้ารหัส เช่น แบบ MD5, hash , sha1
 
-    C003
-    Jame Born
-    jame.born@thaicreate.com
-    US
-    3000000
-    600000
-
-    C004
-    Chalee Angel
-    chalee.angel@thaicreate.com
-    US
-    4000000
-    100000
-
-***โค้ดที่ใช้ Prepare***
-
-    $strCustomerID = $_GET['id'];
-    $conn = new mysqli($serverName,$userName,$userPassword,$dbName);
-    $sql = "SELECT * FROM customer WHERE CustomerID = ? ";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('s', $strCustomerID); 
-    $stmt ->execute();
-    $result = $stmt->get_result();
-
-เมื่อเราใส่ http://localhost/job/?id=C001
-
-***ผลลัพธ์***
-
-    C001
-    Win Weerachai
-    win.weerachai@thaicreate.com
-    TH
-    1000000
-    600000
-
-***ทำการ SQL Injection***
-
-    http://localhost/job/?id=C001'+or+'1'='1&Submit=Submit#
-    http://localhost/job/?id=C001'+or+'1'+=+'1
-
-***ผลลัพธ์***
-จะไม่มีข้อมูลใดๆออกมา
- 
 ***อ้างอิง***
-- <https://www.ninenik.com/content.php?arti_id=927>
-- <https://www.php.net/manual/en/mysqli.prepare.php>
+- <https://www.mindphp.com/%E0%B8%84%E0%B8%B9%E0%B9%88%E0%B8%A1%E0%B8%B7%E0%B8%AD/63-%E0%B8%9F%E0%B8%B1%E0%B8%87%E0%B8%81%E0%B9%8C%E0%B8%8A%E0%B8%B1%E0%B9%88%E0%B8%99-php/682-base64_encode.html>
+- <https://www.php.net/manual/en/function.base64-encode.php>
