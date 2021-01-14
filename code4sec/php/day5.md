@@ -5,7 +5,7 @@ crypto.createCipheriv
 
  **crypto.createCipheriv** คือ อินเตอร์เฟซการเขียนโปรแกรมประยุกต์ inbuilt 
  ของโมดูลการเข้ารหัสลับที่ใช้ในการสร้างวัตถุ Cipher กับที่ระบุขั้นตอนวิธีการที่สำคัญและเวกเตอร์เริ่มต้น
- 
+
  AES encryption ใน Javascript เริ่มจากฝั่ง Browser ที่ต้องพึ่ง Crypto-JS เป็นชุด 
  Library สำหรับใช้ในการเข้ารหัสหรือทำ Hash ต่างๆ สิ่งที่เอามาใช้วันนี้คือ AES ที่เป็นการเข้ารหัส
  ที่ใช้กุญแจเหมือนกันทั้งสองฝั่ง
@@ -105,3 +105,4 @@ padding (Node.js 0.4.12 บน OSX ใช้ pkcs7) เพราะงั้น 
 
 ***อ้างอิง***
 - <http://llun.github.io/blog-archive/llun.in.th/2011/12/crypto-js-node-js-crypto/index.html>
+- <https://www.geeksforgeeks.org/node-js-crypto-createcipheriv-method/>
