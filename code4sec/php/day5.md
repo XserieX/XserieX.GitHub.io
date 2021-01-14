@@ -3,11 +3,18 @@ crypto.createCipheriv
 
 ![](../images/end-to-end-encryption.jpg)
 
- **crypto.createCipheriv** คือ AES encryption ใน Javascript
- เริ่มจากฝั่ง Browser ที่ต้องพึ่ง Crypto-JS เป็นชุด Library สำหรับใช้ในการเ
- ข้ารหัสหรือทำ Hash ต่างๆ สิ่งที่เอามาใช้วันนี้คือ AES ที่เป็นการเข้ารหัสที่ใช้กุญแจเหมือนกันทั้งสองฝั่ง
+ **crypto.createCipheriv** คือ อินเตอร์เฟซการเขียนโปรแกรมประยุกต์ inbuilt 
+ ของโมดูลการเข้ารหัสลับที่ใช้ในการสร้างวัตถุ Cipher กับที่ระบุขั้นตอนวิธีการที่สำคัญและเวกเตอร์เริ่มต้น
+ 
+ AES encryption ใน Javascript เริ่มจากฝั่ง Browser ที่ต้องพึ่ง Crypto-JS เป็นชุด 
+ Library สำหรับใช้ในการเข้ารหัสหรือทำ Hash ต่างๆ สิ่งที่เอามาใช้วันนี้คือ AES ที่เป็นการเข้ารหัส
+ ที่ใช้กุญแจเหมือนกันทั้งสองฝั่ง
 
  **รูปแบบการใช้งาน**
+
+    crypto.createCipheriv( algorithm, key, iv, options )
+
+***ตัวอย่าง***
 
     <script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.4.0-crypto-sha1-hmac-pbkdf2-blockmodes-aes.js"></script>
     <script type="text/javascript">
